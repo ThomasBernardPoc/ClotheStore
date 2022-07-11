@@ -9,6 +9,7 @@ public class ClotheWrapper
     public double? OldPrice { get; set; }
     public IEnumerable<Color> Colors { get; set; }
     public IEnumerable<Sizes> Sizes { get; set; }
+    public IEnumerable<string> Images { get; set; }
 
     public ClotheWrapper()
     {

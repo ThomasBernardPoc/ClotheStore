@@ -3,8 +3,6 @@ using ClotheStore.Services;
 using ClotheStore.Services.Interfaces;
 using ClotheStore.ViewModels.Home;
 using ClotheStore.Views.Pages;
-using CsharpTools.Services;
-using CsharpTools.Services.Interfaces;
 using Prism;
 using Prism.Ioc;
 

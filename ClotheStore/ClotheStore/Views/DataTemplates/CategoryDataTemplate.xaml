@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DataTemplate
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:Commons="clr-namespace:ClotheStore.Commons"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Models="clr-namespace:ClotheStore.Models"
+    x:DataType="Models:CategorieWrapper"
+    x:Class="ClotheStore.Views.DataTemplates.CategoryDataTemplate">
+    
+    <StackLayout Margin="0, 3">
+        <Frame CornerRadius="15" HasShadow="False">
+            <StackLayout Orientation="Horizontal" Spacing="20">
+                <Label
+                    Text="{Binding Icon}"
+                    FontFamily="{Static Commons:Constants.IconFont}"
+                    FontSize="Title"/>
+                <Label
+                    Margin="20, 0"
+                    Text="{Binding Name}"
+                    FontAttributes="Bold"
+                    FontSize="20"/>
+                <!--<Label Text="{Binding Clothes.Count, StringFormat='({0} items)'}"/>-->
+                <Label Text="(345 items)" VerticalTextAlignment="Center"/>
+                <Label
+                    FontSize="20"
+                    VerticalTextAlignment="Center"
+                    HorizontalOptions="EndAndExpand"
+                    Text="{Static Commons:Constants.AngleRight}"
+                    FontFamily="{Static Commons:Constants.IconFont}"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</DataTemplate>

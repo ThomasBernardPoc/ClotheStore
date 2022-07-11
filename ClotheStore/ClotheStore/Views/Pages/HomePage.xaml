@@ -13,132 +13,63 @@
 
     <Grid RowDefinitions="Auto, *">
         <ScrollView Grid.RowSpan="2">
-            <Grid RowDefinitions="Auto, 400, Auto, Auto" RowSpacing="10">
-                <CarouselView ItemsSource="{Binding RecommendationClothes}" Grid.RowSpan="2">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate x:DataType="Models:ClotheWrapper">
-                            <Frame Padding="0" Grid.ColumnSpan="3">
-                                <Grid RowDefinitions="*, Auto, Auto, Auto" ColumnDefinitions="10, *, 10">
-                                    <Image
-                                        Grid.RowSpan="4"
-                                        Aspect="AspectFill"
-                                        Grid.ColumnSpan="3"
-                                        Source="{Binding Image}"/>
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Text="Recommendations"
-                                        TextColor="{StaticResource MidGray}"/>
-                                    <Label
-                                        Grid.Row="2"
-                                        Grid.Column="1"
-                                        FontSize="Title"
-                                        TextColor="{StaticResource White}"
-                                        Text="{Binding Name}"/>
-                                    <Label
-                                        Grid.Row="3"
-                                        Grid.Column="1"
-                                        FontSize="Title"
-                                        FontAttributes="Bold"
-                                        TextColor="{StaticResource Black}"
-                                        Text="{Binding Price, StringFormat='${0}'}"/>
-                                </Grid>
-                            </Frame>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
+            <Grid RowDefinitions="400, Auto, Auto, Auto" RowSpacing="10">
+                <CarouselView
+                    IndicatorView="indicator"
+                    ItemsSource="{Binding RecommendationClothes}"
+                    ItemTemplate="{StaticResource RecommendationDataTemplate}"/>
+
+                <IndicatorView
+                    Grid.Row="1"
+                    x:Name="indicator"
+                    IndicatorColor="{StaticResource LightGray}"
+                    SelectedIndicatorColor="{StaticResource Black}"
+                    HorizontalOptions="Center"/>
 
                 <Grid RowDefinitions="Auto, *" Grid.Row="2" ColumnDefinitions="15, *, 15" RowSpacing="10">
                     <Label
-                    Text="Trending"
-                    FontSize="Title"
-                    Grid.Column="1"/>
+                        Text="Trending"
+                        FontSize="Title"
+                        Grid.Column="1"/>
                     <Label 
-                    Grid.Column="1"
-                    Text="Show all"
-                    VerticalTextAlignment="Center"
-                    HorizontalOptions="EndAndExpand"
-                    TextColor="{StaticResource Primary}"/>
+                        Grid.Column="1"
+                        Text="Show all"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="EndAndExpand"
+                        TextColor="{StaticResource Primary}"/>
 
-                    <CollectionView x:Name="trendingList" Grid.Row="3" Grid.ColumnSpan="3" ItemsSource="{Binding TrendingClothes}">
+                    <CollectionView
+                        Grid.Row="3"
+                        Grid.ColumnSpan="3"
+                        x:Name="trendingList"
+                        ItemsSource="{Binding TrendingClothes}"
+                        ItemTemplate="{StaticResource TrendingDataTemplate}">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Horizontal"/>
                         </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="Models:ClotheWrapper">
-                                <StackLayout Margin="5, 0">
-                                    <Frame CornerRadius="20" Padding="0" HasShadow="False">
-                                        <Grid RowDefinitions="150, Auto, Auto" ColumnDefinitions="15, 120, 15">
-                                            <Image Source="{Binding Image}" Grid.ColumnSpan="3" Aspect="AspectFill" />
-                                            <Label
-                                            Text="{Binding Name}"
-                                            Grid.Row="1"
-                                            Grid.Column="1"
-                                            TextColor="{StaticResource MidGray}"/>
-                                            <Label
-                                            Grid.Row="2"
-                                            FontSize="18"
-                                            Grid.Column="1"
-                                            FontAttributes="Bold"
-                                            Text="{Binding Price, StringFormat='${0}'}"/>
-                                            <Label
-                                            Grid.Row="2"
-                                            Grid.Column="1"
-                                            VerticalTextAlignment="Center"
-                                            TextDecorations="Strikethrough"
-                                            HorizontalOptions="EndAndExpand"
-                                            TextColor="{StaticResource LightGray}"
-                                            Text="{Binding OldPrice, StringFormat='${0}'}"/>
-                                        </Grid>
-                                    </Frame>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
                     </CollectionView>
 
                 </Grid>
 
-                <Grid RowDefinitions="Auto, *" ColumnDefinitions="15, *, 15" Grid.Row="4" RowSpacing="20">
+                <Grid
+                    RowDefinitions="Auto, *" ColumnDefinitions="15, *, 15" Grid.Row="4" RowSpacing="20">
                     <Label
-                    Text="Categories"
-                    FontSize="Title"
-                    Grid.Column="1"/>
+                        Text="Categories"
+                        FontSize="Title"
+                        Grid.Column="1"/>
                     <Label 
-                    Grid.Column="1"
-                    Text="Show all"
-                    VerticalTextAlignment="Center"
-                    HorizontalOptions="EndAndExpand"
-                    TextColor="{StaticResource Primary}"/>
+                        Grid.Column="1"
+                        Text="Show all"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="EndAndExpand"
+                        TextColor="{StaticResource Primary}"/>
 
-                    <CollectionView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Categories}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="Models:CategorieWrapper">
-                                <StackLayout Margin="0, 3">
-                                    <Frame CornerRadius="15" HasShadow="False">
-                                        <StackLayout Orientation="Horizontal" Spacing="20">
-                                            <Label
-                                            Text="{Binding Icon}"
-                                            FontFamily="{Static Commons:Constants.IconFont}"
-                                            FontSize="Title"/>
-                                            <Label
-                                            Margin="20, 0"
-                                            Text="{Binding Name}"
-                                            FontAttributes="Bold"
-                                            FontSize="20"/>
-                                            <!--<Label Text="{Binding Clothes.Count, StringFormat='({0} items)'}"/>-->
-                                            <Label Text="(345 items)" VerticalTextAlignment="Center"/>
-                                            <Label
-                                            FontSize="20"
-                                            VerticalTextAlignment="Center"
-                                            HorizontalOptions="EndAndExpand"
-                                            Text="{Static Commons:Constants.AngleRight}"
-                                            FontFamily="{Static Commons:Constants.IconFont}"/>
-                                        </StackLayout>
-                                    </Frame>
-                                </StackLayout>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                    <CollectionView
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        ItemsSource="{Binding Categories}"
+                        ItemTemplate="{StaticResource CategoryDataTemplate}"/>
+
                 </Grid>
             </Grid>
         </ScrollView>

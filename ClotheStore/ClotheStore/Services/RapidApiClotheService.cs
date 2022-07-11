@@ -1,7 +1,7 @@
 ﻿using ClotheStore.Models;
 using ClotheStore.Models.DTOs;
 using ClotheStore.Services.Interfaces;
-using CsharpTools.Services.Interfaces;
+using System.Net.Http.Headers;
 
 namespace ClotheStore.Services;
 
@@ -15,8 +15,7 @@ public class RapidApiClotheService : IClotheService
 
     public async Task<IEnumerable<CategorieWrapper>> GetCategoriesAsync()
     {
-        var x = await _httpService.SendHttpRequest<RapidApiCategoriesDtoDown>("https://asos2.p.rapidapi.com/categories/list?country=US&lang=en-US", HttpMethod.Get, bearer: "dc28aefa49msh46ea4b9e4afdffep107050jsna6e09df14814");
-
+        var x = await _httpService.SendHttpRequest<RapidApiCategoriesDtoDown>("https://asos2.p.rapidapi.com/categories/list?country=US&lang=en-US", HttpMethod.Get);
         return new List<CategorieWrapper>();
     }
 

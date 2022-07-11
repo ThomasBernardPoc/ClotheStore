@@ -31,8 +31,8 @@ public class HomeViewModel : BaseViewModel
     {
         await base.OnNavigatedToAsync(parameters);
 
-        _trendingClothesCache.AddOrUpdate(await _clotheService.GetClothesAsync());
         _categoriesCache.AddOrUpdate(await _clotheService.GetCategoriesAsync());
+        _trendingClothesCache.AddOrUpdate(await _clotheService.GetClothesAsync());
     }
 
     public IEnumerable<ClotheWrapper> RecommendationClothes { get; set; }
@@ -42,7 +42,6 @@ public class HomeViewModel : BaseViewModel
     private readonly ReadOnlyObservableCollection<ClotheWrapper> _trendingClothes;
     public ReadOnlyObservableCollection<ClotheWrapper> TrendingClothes => _trendingClothes;
     #endregion
-
 
     #region Categories
     private SourceCache<CategorieWrapper, long> _categoriesCache = new SourceCache<CategorieWrapper, long>(l => l.Id);
