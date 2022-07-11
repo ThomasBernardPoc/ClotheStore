@@ -48,4 +48,20 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Prism.DryIoc.Maui" Version="8.1.228-beta" />
+	  <PackageReference Include="Prism.Maui" Version="8.1.228-beta" />
+	  <PackageReference Include="ReactiveUI.Maui" Version="18.2.9" />
+	  <PackageReference Include="Sharpnado.TaskMonitor" Version="1.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Controls\SearchbarControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
